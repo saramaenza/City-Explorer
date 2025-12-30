@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# 🧭 City Explorer 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application built with React that allows users to search for a city and view weather data, geographical information, list of main attractions, and a dynamic background image related to the selected city, integrating data from multiple external APIs into a single, smooth user experience.
 
-## Available Scripts
+## Main Features
+City search with autocomplete
+- API-based assisted search
+- Users can select only valid and available cities
+- Prevents invalid input and reduces edge cases
 
-In the project directory, you can run:
+Current weather and forecast
+- Real-time weather data
+- Clear and readable presentation
 
-### `npm start`
+City details
+- Name
+- Region
+- Country
+- Population
+- Elevation
+- Timezone
+- Geographic coordinates
+- Main attractions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Dynamic background image
+- A city-related background image dynamically loaded based on the selected city
+- Enhances visual context without distracting from core information
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Design Decisions
+### Assisted search instead of free text input
+City search is handled exclusively through an API-driven autocomplete.
 
-### `npm test`
+This approach:
+- ensures data consistency across different APIs
+- reduces input errors
+- improves the overall user experience
+- simplifies error and state management
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Weather and content APIs rely on precise geographic coordinates; forcing the selection of a valid city prevents incorrect requests and unexpected behaviors.
 
-### `npm run build`
+## Technologies Used
+- React
+- Hooks
+- Component-based architecture
+- Tailwind CSS
+- Responsive design
+- JavaScript (ES6+)
+- REST APIs
+- Fetch
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Integrated APIs
+GeoDB Cities API
+- City search
+- City details data
+- Main attractions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+OpenWeather API
+- Current weather
+- Weather forecast
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Unsplash API
+- City-related background images
 
-### `npm run eject`
+## UI State Management
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The application explicitly handles:
+- Loading states during API requests
+- Empty states when no city is selected
+- Error states in case of network or API failures
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This approach improves perceived reliability and overall usability.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Application Structure 
+- AttractionsList: displays a list of attractions for the selected city.
+- BackgroundHero: handles the background image and visual appearance of the hero section.
+- CityDetail: detail page with in-depth information about the selected city.
+- CityHero: city-specific hero section, including background image and title.
+- CityInfoCard: displays additional information or statistics about a city.
+- CitySuggestions: shows suggested cities to explore, with images and links.
+- Explore: page dedicated to exploring new cities and destinations.
+- Footer: application footer with credits and author information.
+- HeroHomepage: homepage hero section, including title and search input.
+- HeroSection: reusable hero component used across multiple pages.
+- LoadingSpinner: loading spinner displayed during asynchronous requests.
+- Navbar: main application navigation bar with menu and page links.
+- PhotoCredit: displays photo credits for images used in the application.
+- ScrollToTop: handles automatic scroll-to-top behavior during navigation.
+- SearchInput: search input used to find and select cities via autocomplete.
+- WeatherPanel: displays weather information for the selected city.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Future Improvements
+- Save favorite cities using localStorage
+- Unit toggle (°C / °F)
+- Performance optimizations (advanced debounce)
 
-## Learn More
+## Author
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Developed by Sara Maenza
+Front-end developer
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Why this project matters
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project demonstrates the ability to integrate multiple data sources, design robust user flows, and transform complex information into a clear and usable interface.
