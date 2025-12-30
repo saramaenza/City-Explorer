@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import debounce from 'lodash.debounce';
+import LoadingSpinner from './LoadingSpinner';
 
 const API_KEY = process.env.REACT_APP_GEODB_KEY;
 const API_URL = 'https://wft-geo-db.p.rapidapi.com/v1/geo/places';
@@ -11,6 +12,8 @@ function SearchInput({ onSelect }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedCity, setSelectedCity] = useState(null);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(null);
   const inputRef = useRef();
   const navigate = useNavigate();
 
@@ -18,8 +21,12 @@ function SearchInput({ onSelect }) {
   const fetchCities = async (namePrefix) => {
     if (!namePrefix || namePrefix.length < 3) {
       setSuggestions([]);
+      setShowDropdown(false);
+      setFetchError(null);
       return;
     }
+    setLoading(true);
+    setFetchError(null);
     try {
       const res = await fetch(`${API_URL}?namePrefix=${namePrefix}&minPopulation=100000&limit=5&sort=population`, {
         headers: {
@@ -30,8 +37,13 @@ function SearchInput({ onSelect }) {
       const data = await res.json();
       setSuggestions(data.data || []);
       setShowDropdown(true);
+      setFetchError(null);
     } catch (e) {
+      setFetchError("Failed to fetch cities.");
       setSuggestions([]);
+      setShowDropdown(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -110,12 +122,23 @@ function SearchInput({ onSelect }) {
         {error && (
           <div className="font-work absolute top-15 bg-white border border-red-400 rounded-xl px-6 py-2 shadow-lg z-60 text-red-600 text-lg font-medium flex items-center justify-center"
               style={{ minWidth: '250px', pointerEvents: 'none' }}>
-            Please enter a destination to start searching.
+            Please enter a destination to start searching
           </div>
         )}
         {showDropdown && suggestions.length > 0 && (
           <ul className="absolute z-10 left-0 right-0 bg-white rounded-2xl font-work border border-gray-200 rounded-b-2xl shadow-lg mt-1 max-h-60 overflow-auto">
-            {suggestions.map(city => (
+            {loading && (
+              <li className="px-4 py-2 text-gray-500 flex items-center">
+                <LoadingSpinner text="cities" />
+              </li>
+            )}
+            {fetchError && (
+              <li className="px-4 py-2 text-gray-500">Error: {fetchError}</li>
+            )}
+            {!loading && !fetchError && suggestions.length === 0 && (
+              <li className="px-4 py-2 text-gray-500">No cities found.</li>
+            )}
+            {!loading && !fetchError && suggestions.map(city => (
               <li
                 key={city.id}
                 className="px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-2xl"
