@@ -106,6 +106,7 @@ This approach improves perceived reliability and overall usability.
 ## Author
 
 Developed by Sara Maenza
+
 Front-end developer
 
 ## Why this project matters
