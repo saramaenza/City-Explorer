@@ -1,101 +1,58 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PhotoCredit from "./PhotoCredit";
+import { fetchCityUnsplashPhoto } from "../utils/unsplash";
 
-const suggestedCities = [
-  { name: "Rome", label: "Roma", country: "Italia" },
-  { name: "Paris", label: "Parigi", country: "Francia" },
-  { name: "New York", label: "New York", country: "USA" },
-  { name: "London", label: "Londra", country: "Regno Unito" },
-];
-
-function CitySuggestions() {
+function CitySuggestions({ suggestedCities, text }) {
   const [cities, setCities] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCityImages = async () => {
       const results = await Promise.all(
         suggestedCities.map(async (city) => {
-          const res = await fetch(
-            `https://api.unsplash.com/search/photos?query=${city.name}+city&per_page=1&orientation=landscape`,
-            {
-              headers: {
-                Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_KEY}`,
-                "Accept-Version": "v1",
-              },
-            }
-          );
-
-          const data = await res.json();
-          const photo = data.results[0];
-
-          // Trigger download (REQUIRED by Unsplash)
-          if (photo?.links?.download_location) {
-            fetch(photo.links.download_location, {
-              headers: {
-                Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_KEY}`,
-              },
-            });
-          }
-
-          return {
-            ...city,
-            photo,
-          };
+          const photo = await fetchCityUnsplashPhoto(city.name, process.env.REACT_APP_UNSPLASH_KEY);
+          return { ...city, photo };
         })
       );
-
       setCities(results);
     };
-
     fetchCityImages();
-  }, []);
+  }, [suggestedCities]);
 
   return (
-    <div className="py-20 mx-10">
-        <h2 className="font-bebas text-4xl">Lasciati ispirare</h2>
+    <div className="mx-10">
+        <h2 className="font-bebas text-4xl">{text}</h2>
         <div className="flex flex-row justify-center gap-12 mt-6">
         {cities.map((city) => (
             <div
             key={city.name}
             className="relative flex-1 min-w-0 flex overflow-hidden rounded-2xl px-8 pb-8 pt-40 shadow-lg group transition-all duration-300 hover:cursor-pointer"
+            onClick={() =>
+              navigate(
+                `/city/${encodeURIComponent(city.name)}/${encodeURIComponent(city.wikiCode || "")}`
+              )
+            }
             >
             {city.photo && (
                 <>
                 <img
                     src={city.photo.urls.regular}
-                    alt={city.photo.alt_description || city.label}
+                    alt={city.photo.alt_description || city.name}
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
 
-                <div className="absolute bottom-2 right-2 z-20 text-xs text-white opacity-50 pointer-events-auto">
-                    Photo by{" "}
-                    <a
-                    href={`${city.photo.user.links.html}?utm_source=city_explorer&utm_medium=referral`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline"
-                    >
-                    {city.photo.user.name}
-                    </a>{" "}
-                    on{" "}
-                    <a
-                    href="https://unsplash.com/?utm_source=city_explorer&utm_medium=referral"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline"
-                    >
-                    Unsplash
-                    </a>
-                </div>
+                <PhotoCredit author={city.photo.user.name} url={`${city.photo.user.links.html}?utm_source=city_explorer&utm_medium=referral`} downloadUrl={city.photo.links.download} />
                 </>
             )}
 
             <div className="absolute inset-0 bg-black opacity-40 group-hover:opacity-70 transition-opacity duration-300"></div>
 
             <div className="absolute top-0 left-0 z-10 p-6 transition-all duration-300 group-hover:-translate-y-2">
-                <h3 className="text-5xl tracking-wide font-bebas font-medium text-white drop-shadow group-hover:text-yellow-300 transition-colors duration-300">
-                {city.label}
+                <h3 className="text-5xl tracking-wide font-bebas font-medium text-white drop-shadow group-hover:text-yellow-500 transition-colors duration-300">
+                {city.name}
                 </h3>
-                <div className="text-md font-work leading-6 text-white group-hover:text-yellow-100 transition-colors duration-300">
+                <div className="text-md font-work leading-6 text-white group-hover:text-yellow-500 transition-colors duration-300">
                 {city.country}
                 </div>
             </div>
