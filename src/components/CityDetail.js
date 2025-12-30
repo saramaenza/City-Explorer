@@ -22,6 +22,7 @@ function CityDetail() {
   useEffect(() => {
     let isMounted = true;
 
+    //Get city image from Unsplash
     const fetchCityImage = async () => {
       if (photo) return;
       const photoResult = await fetchCityUnsplashPhoto(cityName, process.env.REACT_APP_UNSPLASH_KEY);
@@ -29,6 +30,7 @@ function CityDetail() {
       setLoadingImage(false);
     };
 
+    //Get city weather from OpenWeather
     const fetchCityWeather = async () => {
       setErrorWeather(null);
       try {
@@ -54,6 +56,7 @@ function CityDetail() {
       }
     };
 
+    //Get city details from GeoDB
     const fetchCityDetail = async (retryCount = 0) => {
       if (cityDetails) return;
       const res = await fetch(
@@ -65,7 +68,7 @@ function CityDetail() {
         }
       );
       if (res.status === 429 && retryCount < 5) {
-        // Se rate limit, ritenta dopo 3 secondi (max 5 tentativi)
+        // If rate limit, retry after 3 seconds (max 5 attempts)
         setTimeout(() => fetchCityDetail(retryCount + 1), 3000);
         return;
       }
@@ -82,6 +85,7 @@ function CityDetail() {
       }
     };
 
+    //Get city attractions from Wikidata
     const fetchAttractions = async (wikiDataId) => {
       const query = `
         SELECT DISTINCT ?attraction ?attractionLabel ?gps WHERE {
@@ -99,7 +103,6 @@ function CityDetail() {
         name: item.attractionLabel.value,
         link: item.attraction.value
       }));
-      console.log("Attractions for", cityName, results);
       setAttractions(results);
       setLoadingAttractions(false);
     };

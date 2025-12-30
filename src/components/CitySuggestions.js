@@ -13,6 +13,8 @@ function CitySuggestions({ suggestedCities, text }) {
   useEffect(() => {
     setLoading(true);
     setError(null);
+
+    // Fetch images for suggested cities from Unsplash
     const fetchCityImages = async () => {
       try {
         const results = await Promise.all(

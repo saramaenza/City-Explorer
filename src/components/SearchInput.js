@@ -17,7 +17,7 @@ function SearchInput({ onSelect }) {
   const inputRef = useRef();
   const navigate = useNavigate();
 
-  // Funzione per fetchare le città
+  // Fetch cities from GeoDB
   const fetchCities = async (namePrefix) => {
     if (!namePrefix || namePrefix.length < 3) {
       setSuggestions([]);
@@ -55,7 +55,7 @@ function SearchInput({ onSelect }) {
     return () => debouncedFetch.cancel();
   }, [query, debouncedFetch]);
 
-  // Gestione selezione città
+  // Handle city selection
   const handleSelect = (city) => {
     setQuery(`${city.name}, ${city.country}`);
     setShowDropdown(false);
@@ -65,7 +65,7 @@ function SearchInput({ onSelect }) {
     if (onSelect) onSelect(city);
   };
 
-  // Chiudi dropdown se clicchi fuori
+  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
@@ -77,7 +77,7 @@ function SearchInput({ onSelect }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-   // Gestione submit (Enter o click su Search)
+   // Handle search submission 
   const handleSearch = (e) => {
     if (e) e.preventDefault();
     if (selectedCity) {
