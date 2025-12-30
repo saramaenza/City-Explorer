@@ -20,11 +20,15 @@ City details
 - Elevation
 - Timezone
 - Geographic coordinates
-- Main attractions
-
+  
 Dynamic background image
 - A city-related background image dynamically loaded based on the selected city
 - Enhances visual context without distracting from core information
+
+List of main attractions
+- Retrieves notable attractions from Wikidata using the city’s unique ID
+- Displays attraction names with links to their Wikidata pages
+
 
 ## Design Decisions
 ### Assisted search instead of free text input
@@ -40,13 +44,15 @@ Weather and content APIs rely on precise geographic coordinates; forcing the sel
 
 ## Technologies Used
 - React
-- Hooks
-- Component-based architecture
+  - Hooks
+  - Component-based architecture
 - Tailwind CSS
-- Responsive design
+  - Utility-first styling
+  - Responsive design
 - JavaScript (ES6+)
 - REST APIs
-- Fetch
+  - Fetch
+- SPARQL queries to Wikidata for retrieving city attractions
 
 ## Integrated APIs
 GeoDB Cities API
@@ -60,6 +66,10 @@ OpenWeather API
 
 Unsplash API
 - City-related background images
+
+Wikidata
+- Main attractions for the selected city
+- Attraction names and links
 
 ## UI State Management
 
@@ -100,4 +110,4 @@ Front-end developer
 
 ## Why this project matters
 
-This project demonstrates the ability to integrate multiple data sources, design robust user flows, and transform complex information into a clear and usable interface.
+This project demonstrates the ability to integrate multiple data sources, including REST APIs and SPARQL queries, design robust user flows, and transform complex information into a clear and usable interface.
