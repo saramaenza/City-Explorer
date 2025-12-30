@@ -1,7 +1,6 @@
 import React from 'react';
 import CitySuggestions from './CitySuggestions';
 import HeroSection from './HeroSection';
-import SearchInput from './SearchInput';
 import PhotoCredit from "./PhotoCredit";
 
 const UNSPLASH_IMAGE_URL = 'https://images.unsplash.com/photo-1604239282228-6a723984962c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
