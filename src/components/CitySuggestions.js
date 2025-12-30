@@ -2,20 +2,31 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PhotoCredit from "./PhotoCredit";
 import { fetchCityUnsplashPhoto } from "../utils/unsplash";
+import LoadingSpinner from "./LoadingSpinner";
 
 function CitySuggestions({ suggestedCities, text }) {
   const [cities, setCities] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
+    setError(null);
     const fetchCityImages = async () => {
-      const results = await Promise.all(
-        suggestedCities.map(async (city) => {
-          const photo = await fetchCityUnsplashPhoto(city.name, process.env.REACT_APP_UNSPLASH_KEY);
-          return { ...city, photo };
-        })
-      );
-      setCities(results);
+      try {
+        const results = await Promise.all(
+          suggestedCities.map(async (city) => {
+            const photo = await fetchCityUnsplashPhoto(city.name, process.env.REACT_APP_UNSPLASH_KEY);
+            return { ...city, photo };
+          })
+        );
+        setCities(results);
+      } catch (e) {
+        setError("Failed to load city images.");
+      } finally {
+        setLoading(false);
+      }
     };
     fetchCityImages();
   }, [suggestedCities]);
@@ -23,6 +34,17 @@ function CitySuggestions({ suggestedCities, text }) {
   return (
     <div className="mx-10">
         <h2 className="font-bebas text-4xl">{text}</h2>
+        {loading && (
+          <div className="flex items-center justify-center mt-8">
+            <LoadingSpinner text="cities" />
+          </div>
+        )}
+        {error && (
+          <div className="font-work text-lg mt-8">Error: {error}</div>
+        )}
+        {!loading && !error && cities.length === 0 && (
+          <div className="font-work text-lg mt-8">No suggestions found.</div>
+        )}
         <div className="flex flex-row justify-center gap-12 mt-6">
         {cities.map((city) => (
             <div
