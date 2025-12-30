@@ -30,7 +30,6 @@ function CityDetail() {
     };
 
     const fetchCityWeather = async () => {
-      setLoadingWeather(true);
       setErrorWeather(null);
       try {
         const res = await fetch(
