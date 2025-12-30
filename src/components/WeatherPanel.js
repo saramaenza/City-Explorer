@@ -1,6 +1,8 @@
 import LoadingSpinner from "./LoadingSpinner";
 
-function WeatherPanel({ weather, forecast, loading }) {
+function WeatherPanel({ weather, forecast, loading, error }) {
+  if (error) return <div className="font-work text-lg py-5 px-10">Error: {error}</div>;
+  if (!weather) return <div className="font-work text-lg py-5 px-10">No weather data available.</div>;
   return (
     <>
       {loading ? (

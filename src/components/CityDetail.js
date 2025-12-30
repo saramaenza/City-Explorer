@@ -17,6 +17,7 @@ function CityDetail() {
   const [forecast, setForecast] = useState([]);
   const [cityDetails, setCityDetails] = useState(null);
   const [attractions, setAttractions] = useState([]);
+  const [errorWeather, setErrorWeather] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -29,15 +30,29 @@ function CityDetail() {
     };
 
     const fetchCityWeather = async () => {
-      if (weather) return;
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&lang=en&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&units=metric`
-      );
-      const data = await res.json();
-      setLabelCityName(data.city.name);
-      setWeather(data.list[0]);
-      setForecast(data.list.slice(1, 6)); // salva le prossime 5 previsioni
-      setLoadingWeather(false);
+      setLoadingWeather(true);
+      setErrorWeather(null);
+      try {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&lang=en&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&units=metric`
+        );
+        if (!res.ok) {
+          throw new Error("Failed to fetch weather data.");
+        }
+        const data = await res.json();
+        if (!data.city || !data.list || data.list.length === 0) {
+          throw new Error("No weather data found.");
+        }
+        setLabelCityName(data.city.name);
+        setWeather(data.list[0]);
+        setForecast(data.list.slice(1, 6)); // salva le prossime 5 previsioni
+      } catch (e) {
+        setErrorWeather(e.message || "Failed to fetch weather data.");
+        setWeather(null);
+        setForecast([]);
+      } finally {
+        setLoadingWeather(false);
+      }
     };
 
     const fetchCityDetail = async (retryCount = 0) => {
@@ -107,6 +122,7 @@ function CityDetail() {
         forecast={forecast}
         loadingWeather={loadingWeather}
         loadingImage={loadingImage}
+        errorWeather={errorWeather}
       />
       
       <div className="py-20 mx-10">
