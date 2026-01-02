@@ -5,12 +5,12 @@ function HeroSection({ image, title, subtitle, homepage, children }) {
   return (
     <BackgroundHero image={image}>
       <h1
-        className={`font-bebas text-9xl text-white text-center tracking-wide relative z-10 ${!homepage ? "pt-20" : ""} drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-lg`}
+        className={`font-bebas text-7xl sm:text-7xl md:text-8xl lg:text-9xl text-white pt-15 sm:pt-20 text-center tracking-wide relative z-10 ${!homepage ? "pt-10 sm:pt-16 md:pt-20" : ""} drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-lg`}
       >
-        {title} 
+        {title}
       </h1>
       {subtitle && (
-        <h4 className="font-work text-2xl font-medium text-white text-center drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-lg`">
+        <h4 className="font-work text-lg sm:text-xl md:text-2xl font-medium text-white text-center drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-lg">
           {subtitle}
         </h4>
       )}

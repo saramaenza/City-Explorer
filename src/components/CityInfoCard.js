@@ -16,7 +16,7 @@ function CityInfoCard({ cityDetails, loading, error }) {
           <LoadingSpinner text="city info" />
         </div>
       ) : (
-        <div className="bg-white rounded-3xl p-9 w-2/3 mx-auto shadow-2xl font-work">
+        <div className="bg-white rounded-3xl p-9 w-full mx-auto shadow-2xl font-work">
           <div className="mb-6 pb-4 border-b-2 border-gray-100">
               <h1 className="text-4xl font-bebas tracking-wides text-gray-900 mb-2">{cityDetails?.name || "-"}</h1>            <div className="text-amber-600 font-medium flex items-center gap-2 country">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="inline-block"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function PhotoCredit({ author, url, downloadUrl }) {
   if (!author || !url) return null;
   return (
-    <div className="absolute bottom-2 right-2 text-xs text-gray-200/80 z-20">
+    <div className="absolute bottom-2 right-2 text-[10px] sm:text-xs text-gray-200/80 z-20 px-2 py-1 rounded max-w-[90vw] wrap-break-words">
       Photo by{" "}
       <a
         href={url}

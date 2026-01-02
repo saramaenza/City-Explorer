@@ -62,9 +62,8 @@ function CityDetail() {
 
     //Get city details from GeoDB
     const fetchCityDetail = async (retryCount = 0) => {
-      if (isFetchingCityDetail) return; // evita chiamate doppie
+      if (isFetchingCityDetail) return; // Prevent multiple simultaneous fetches
       setIsFetchingCityDetail(true);
-      console.log("Fetching city details...");
       setLoadingInfoCard(true);
       setErrorInfoCard(null);
       try {
@@ -147,19 +146,20 @@ function CityDetail() {
         errorWeather={errorWeather}
       />
       
-      <div className="py-20 mx-10">
-        <div className="flex">
-          <div className="w-1/2 flex items-center justify-center">
+      <div className="py-20 mx-6 md:mx-10">
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-full lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0 px-10">
             <CityInfoCard 
               cityDetails={cityDetails} 
               loading={loadingInfoCard} 
               error={errorInfoCard}
             />
           </div>
-          <div className="w-1/2 justify-center">
+          <div className="w-full lg:w-1/2 flex justify-center">
             <AttractionsList 
-            attractions={attractions} 
-            loading={loadingAttractions} />
+              attractions={attractions} 
+              loading={loadingAttractions} 
+            />
           </div>
         </div>
       </div>
