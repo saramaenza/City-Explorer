@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function PhotoCredit({ author, url, downloadUrl }) {
   if (!author || !url) return null;
   return (
@@ -25,5 +27,17 @@ function PhotoCredit({ author, url, downloadUrl }) {
     </div>
   );
 }
+
+PhotoCredit.propTypes = {
+  author: PropTypes.string,
+  url: PropTypes.string,
+  downloadUrl: PropTypes.string,
+};
+
+PhotoCredit.defaultProps = {
+  author: "",
+  url: "",
+  downloadUrl: "",
+};
 
 export default PhotoCredit;

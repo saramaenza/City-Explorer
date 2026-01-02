@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import LoadingSpinner from './LoadingSpinner';
+import PropTypes from "prop-types";
 
 const API_KEY = process.env.REACT_APP_GEODB_KEY;
 const API_URL = 'https://wft-geo-db.p.rapidapi.com/v1/geo/places';
@@ -110,7 +111,7 @@ function SearchInput({ onSelect }) {
           />
           <button
             type="button"
-            className="font-work cursor-pointer p-3 bg-yellow-500 inline-flex items-center text-black bg-brand hover:bg-yellow-400 shadow-xs font-medium leading-5 rounded-r-2xl text-md
+            className="font-work cursor-pointer p-3 bg-amber-500 inline-flex items-center text-black bg-brand hover:bg-amber-400 shadow-xs font-medium leading-5 rounded-r-2xl text-md
               focus:outline-none focus:ring-0 focus:border-transparent
               focus-visible:outline-none focus-visible:ring-0 focus-visible:border-transparent"
             onClick={handleSearch}
@@ -153,5 +154,13 @@ function SearchInput({ onSelect }) {
     </form>
   );
 }
+
+SearchInput.propTypes = {
+  onSelect: PropTypes.func,
+};
+
+SearchInput.defaultProps = {
+  onSelect: null,
+};
 
 export default SearchInput;

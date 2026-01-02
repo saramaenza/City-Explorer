@@ -1,8 +1,9 @@
 import LoadingSpinner from "./LoadingSpinner";
+import PropTypes from "prop-types";
 
 function WeatherPanel({ weather, forecast, loading, error }) {
   if (error) return <div className="font-work text-lg py-5 px-10">Error: {error}</div>;
-  if (!weather) return <div className="font-work text-lg py-5 px-10">No weather data available.</div>;
+  if (!weather && !forecast) return <div className="font-work text-lg py-5 px-10">No weather data available.</div>;
   return (
     <>
       {loading ? (
@@ -12,7 +13,7 @@ function WeatherPanel({ weather, forecast, loading, error }) {
       ) : (
         <>
           {weather && (
-            <div className="px-6 mt-3 mb-3 py-2 flex flex-col items-center">
+            <div className="px-6 mb-3 py-5 flex flex-col items-center">
               <div className="flex items-center gap-3">
                 {weather.weather && weather.weather[0] && (
                   <img
@@ -80,5 +81,12 @@ function WeatherPanel({ weather, forecast, loading, error }) {
     </>
   );
 }
+
+WeatherPanel.propTypes = {
+  weather: PropTypes.object,
+  forecast: PropTypes.array,
+  loading: PropTypes.bool,
+  error: PropTypes.any,
+};
 
 export default WeatherPanel;

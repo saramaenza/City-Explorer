@@ -1,15 +1,16 @@
 import BackgroundHero from "./BackgroundHero";
+import PropTypes from "prop-types";
 
 function HeroSection({ image, title, subtitle, homepage, children }) {
   return (
     <BackgroundHero image={image}>
       <h1
-        className={`font-bebas text-6xl text-white drop-shadow-lg text-shadow-lg text-center tracking-wide ${!homepage ? "pt-20" : ""}`}
+        className={`font-bebas text-9xl text-white text-center tracking-wide relative z-10 ${!homepage ? "pt-20" : ""} drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-lg`}
       >
-        {title}
+        {title} 
       </h1>
       {subtitle && (
-        <h4 className="font-work text-xl font-medium text-white mt-3 drop-shadow-lg text-shadow-lg text-center">
+        <h4 className="font-work text-2xl font-medium text-white text-center drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-lg`">
           {subtitle}
         </h4>
       )}
@@ -17,5 +18,19 @@ function HeroSection({ image, title, subtitle, homepage, children }) {
     </BackgroundHero>
   );
 }
+
+HeroSection.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  homepage: PropTypes.bool,
+  children: PropTypes.node,
+};
+
+HeroSection.defaultProps = {
+  subtitle: "",
+  homepage: false,
+  children: null,
+};
 
 export default HeroSection;

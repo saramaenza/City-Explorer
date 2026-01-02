@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function BackgroundHero({ image, children }) {
   return (
     <div
@@ -15,5 +17,10 @@ function BackgroundHero({ image, children }) {
     </div>
   );
 }
+
+BackgroundHero.propTypes = {
+  image: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
 
 export default BackgroundHero;

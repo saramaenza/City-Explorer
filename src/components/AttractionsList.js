@@ -1,4 +1,5 @@
 import LoadingSpinner from "./LoadingSpinner";
+import PropTypes from "prop-types";
 
 function AttractionsList({ attractions, loading }) {
   return (
@@ -22,7 +23,7 @@ function AttractionsList({ attractions, loading }) {
                     className="text-gray-900 relative group"
                   >
                     {attr.name}
-                    <span className="absolute left-0 right-0 -bottom-1 h-1 w-0 bg-yellow-400 rounded transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute left-0 right-0 -bottom-1 h-1 w-0 bg-amber-500 rounded transition-all duration-300 group-hover:w-full"></span>
                   </a>
                 </li>
               ))}
@@ -35,5 +36,19 @@ function AttractionsList({ attractions, loading }) {
     </>
   );
 }
+AttractionsList.propTypes = {
+  attractions: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    })
+  ),
+  loading: PropTypes.bool,
+};
+
+AttractionsList.defaultProps = {
+  attractions: [],
+  loading: false,
+};
 
 export default AttractionsList;

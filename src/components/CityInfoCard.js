@@ -61,4 +61,25 @@ function CityInfoCard({ cityDetails, loading }) {
   );
 }
 
+CityInfoCard.propTypes = {
+  cityDetails: PropTypes.shape({
+    name: PropTypes.string,
+    region: PropTypes.string,
+    country: PropTypes.string,
+    population: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    elevationMeters: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    timezone: PropTypes.string,
+    latitude: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    longitude: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
+  loading: PropTypes.bool,
+  error: PropTypes.any,
+};
+
+CityInfoCard.defaultProps = {
+  cityDetails: {},
+  loading: false,
+  error: null,
+};
+
 export default CityInfoCard;
