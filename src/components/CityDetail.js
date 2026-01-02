@@ -18,13 +18,17 @@ function CityDetail() {
   const [cityDetails, setCityDetails] = useState(null);
   const [attractions, setAttractions] = useState([]);
   const [errorWeather, setErrorWeather] = useState(null);
+  const [errorInfoCard, setErrorInfoCard] = useState(null);
+  const [isFetchingCityDetail, setIsFetchingCityDetail] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
 
+    setPhoto(null);
+    setLoadingImage(true);
+
     //Get city image from Unsplash
     const fetchCityImage = async () => {
-      if (photo) return;
       const photoResult = await fetchCityUnsplashPhoto(cityName, process.env.REACT_APP_UNSPLASH_KEY);
       setPhoto(photoResult);
       setLoadingImage(false);
@@ -58,30 +62,46 @@ function CityDetail() {
 
     //Get city details from GeoDB
     const fetchCityDetail = async (retryCount = 0) => {
-      if (cityDetails) return;
-      const res = await fetch(
-        `https://wft-geo-db.p.rapidapi.com/v1/geo/places/${wikiCode}`, {
-          headers: {
-            'X-RapidAPI-Key': process.env.REACT_APP_GEODB_KEY,
-            'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+      if (isFetchingCityDetail) return; // evita chiamate doppie
+      setIsFetchingCityDetail(true);
+      console.log("Fetching city details...");
+      setLoadingInfoCard(true);
+      setErrorInfoCard(null);
+      try {
+        const res = await fetch(
+          `https://wft-geo-db.p.rapidapi.com/v1/geo/places/${wikiCode}`, {
+            headers: {
+              'X-RapidAPI-Key': process.env.REACT_APP_GEODB_KEY,
+              'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+            }
           }
+        );
+        if (res.status === 429 && retryCount < 5) {
+          // Wait 2 seconds and retry
+          setTimeout(() => fetchCityDetail(retryCount + 1), 2000);
+          return;
         }
-      );
-      if (res.status === 429 && retryCount < 5) {
-        // If rate limit, retry after 3 seconds (max 5 attempts)
-        setTimeout(() => fetchCityDetail(retryCount + 1), 3000);
-        return;
-      }
-      const data = await res.json();
-      const cityDetailsData = data.data;
-      if (!cityDetailsData) {
-        console.log(cityName, "City not found", wikiCode);
-        return;
-      }
-      if (isMounted) {
-        setLoadingInfoCard(false);
-        setCityDetails(cityDetailsData);
-        fetchAttractions(wikiCode);
+        if (res.status === 429) {
+          setErrorInfoCard("you have exceeded the API request limit. Please try again later.");
+          setLoadingInfoCard(false);
+          fetchAttractions(wikiCode);
+          return;
+        }
+        const data = await res.json();
+        const cityDetailsData = data.data;
+        if (!cityDetailsData) {
+          setErrorInfoCard("city not found.");
+          setLoadingInfoCard(false);
+          fetchAttractions(wikiCode);
+          return;
+        }
+        if (isMounted) {
+          setCityDetails(cityDetailsData);
+          setLoadingInfoCard(false);
+          fetchAttractions(wikiCode);
+        }
+      } finally {
+        setIsFetchingCityDetail(false);
       }
     };
 
@@ -113,7 +133,7 @@ function CityDetail() {
 
     return () => { isMounted = false; };
 
-  }, [cityName, wikiCode, photo, weather, cityDetails, attractions]);
+  }, [cityName, wikiCode]);
 
   return (
     <>
@@ -130,10 +150,16 @@ function CityDetail() {
       <div className="py-20 mx-10">
         <div className="flex">
           <div className="w-1/2 flex items-center justify-center">
-            <CityInfoCard cityDetails={cityDetails} loading={loadingInfoCard} />
+            <CityInfoCard 
+              cityDetails={cityDetails} 
+              loading={loadingInfoCard} 
+              error={errorInfoCard}
+            />
           </div>
           <div className="w-1/2 justify-center">
-            <AttractionsList attractions={attractions} loading={loadingAttractions} />
+            <AttractionsList 
+            attractions={attractions} 
+            loading={loadingAttractions} />
           </div>
         </div>
       </div>
