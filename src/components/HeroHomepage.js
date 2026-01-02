@@ -9,7 +9,7 @@ function HeroHomepage() {
     <>
       <HeroSection
         image={UNSPLASH_IMAGE_URL}
-        title="Explore the cities in the world"
+        title="Let's explore the world"
         subtitle="Find your next destination"
         homepage={true}
       >

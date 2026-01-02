@@ -5,18 +5,18 @@ function Hero() {
 
   return (
     <nav
-      className="absolute inset-x-0 top-0 z-50 mt-5 mx-auto w-2xl max-w-3xl border border-gray-100 bg-white py-3 shadow backdrop-blur-lg md:top-6 md:rounded-2xl lg:max-w-5xl"
+      className="absolute inset-x-0 top-0 z-50 mt-2 mx-auto w-2xl max-w-3xl border border-gray-100 bg-white py-3 shadow backdrop-blur-lg md:top-6 md:rounded-2xl lg:max-w-5xl focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
       aria-label="Main navigation"
     >
       <div className="px-4">
-        <div className="flex items-center justify-between">
-          <div className="flex shrink-0">
+        <div className="flex items-center justify-between focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0">
+          <div className="flex shrink-0 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0">
             <a
               aria-current="page"
-              className="flex items-center justify-center h-full"
+              className="flex items-center justify-center h-full focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
               href="/"
             >
-              <span className="inline-block font-bebas text-2xl tracking-wide">
+              <span className="inline-block font-bebas text-2xl tracking-wide focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0">
                 <img src="../img/logo.png" 
                   alt="City Explorer Logo" 
                   className="h-8 w-auto focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0" />
@@ -30,19 +30,19 @@ function Hero() {
               href="/"
             >
               Home
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-400 rounded transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-amber-500 rounded transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
               className="font-work inline-block rounded-lg px-2 py-1 text-md font-medium text-gray-900 relative group"
               href="/explore"
             >
               Explore
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-400 rounded transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-amber-500 rounded transition-all duration-300 group-hover:w-full"></span>
             </a>
           </div>
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded focus:outline focus:ring-2 focus:ring-blue-400"
+            className="md:hidden p-2 rounded focus:outline focus:ring-2 focus:ring-amber-500"
             aria-label="Apri menu"
             onClick={() => setMenuOpen(!menuOpen)}
           >

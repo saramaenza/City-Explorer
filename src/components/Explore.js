@@ -8,8 +8,8 @@ const UNSPLASH_IMAGE_URL = 'https://images.unsplash.com/photo-1604239282228-6a72
 const suggestedCitiesEurope = [
     { name: "Berlin", country: "Germany", wikiCode: "Q64" },
     { name: "Madrid", country: "Spain", wikiCode: "Q2807" },
-    { name: "Lisbon", country: "Portugal", wikiCode: "Q270" },
-    { name: "Vienna", country: "Austria", wikiCode: "Q1741" }
+    { name: "Vienna", country: "Austria", wikiCode: "Q1741" },
+    { name: "Porto", country: "Portugal", wikiCode: "Q1714" }
 ];
 
 const suggestedCitiesAmerica = [
