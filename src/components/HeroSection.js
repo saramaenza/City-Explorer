@@ -25,12 +25,14 @@ HeroSection.propTypes = {
   subtitle: PropTypes.string,
   homepage: PropTypes.bool,
   children: PropTypes.node,
+  isCityHero: PropTypes.bool,
 };
 
 HeroSection.defaultProps = {
   subtitle: "",
   homepage: false,
   children: null,
+  isCityHero: false,
 };
 
 export default HeroSection;

@@ -54,7 +54,7 @@ function Explore() {
             author="Tim Garifov" 
             url="https://unsplash.com/it/@timgarifov?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" 
             downloadUrl="https://unsplash.com/photos/PKZtpOIMRYk/download?force=true"
-            isHero={false}
+            isHero={true}
         />
 
         <div className="py-10">
