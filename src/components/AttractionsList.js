@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function AttractionsList({ attractions, loading }) {
   return (
     <div className="flex flex-col items-left w-full">
-      <h2 className="font-bebas text-4xl lg:pt-0 md:pt-15 sm:pt-10 pt-15">Main attraction</h2>
+      <h2 className="font-bebas text-3xl lg:pt-0 md:pt-15 sm:pt-10 pt-15">Main attraction</h2>
       {loading && (
         <div className="flex items-center mt-8">
           <LoadingSpinner text="attractions" />
@@ -13,7 +13,7 @@ function AttractionsList({ attractions, loading }) {
       {!loading && (
         <>
           {attractions.length > 0 ? (
-            <ul className="list-disc font-work text-base sm:text-lg pl-4 sm:pl-8 mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-2 w-full">
+            <ul className="list-disc font-work text-base sm:text-md pl-4 sm:pl-8 mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-2 w-full">
               {attractions.map((attr, idx) => (
                 <li key={idx} className="relative">
                   <a

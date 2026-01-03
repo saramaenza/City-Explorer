@@ -146,9 +146,9 @@ function CityDetail() {
         errorWeather={errorWeather}
       />
       
-      <div className="py-20 mx-6 md:mx-10">
+      <div className="py-10 mx-6 md:mx-8">
         <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0 px-10">
+          <div className="w-full lg:w-1/2 flex items-center justify-center mb-6 lg:mb-0 px-10">
             <CityInfoCard 
               cityDetails={cityDetails} 
               loading={loadingInfoCard} 

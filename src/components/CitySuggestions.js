@@ -35,24 +35,24 @@ function CitySuggestions({ suggestedCities, text }) {
   }, [suggestedCities]);
 
   return (
-    <div className="mx-6 md:mx-10">
-        <h2 className="font-bebas text-4xl">{text}</h2>
+    <div className="mx-2 md:mx-6">
+        <h2 className="font-bebas text-3xl">{text}</h2>
         {loading && (
-          <div className="flex items-center justify-center mt-8">
+          <div className="flex items-center justify-center mt-6">
             <LoadingSpinner text="cities" />
           </div>
         )}
         {error && (
-          <div className="font-work text-lg mt-8">Error: {error}</div>
+          <div className="font-work text-base mt-6">Error: {error}</div>
         )}
         {!loading && !error && cities.length === 0 && (
-          <div className="font-work text-lg mt-8">No suggestions found.</div>
+          <div className="font-work text-base mt-6">No suggestions found.</div>
         )}
-        <div className="flex flex-col md:flex-row justify-center gap-6 lg:gap-12 mt-6">
+        <div className="flex flex-col md:flex-row justify-center gap-4 lg:gap-8 mt-4">
         {cities.map((city) => (
           <div
             key={city.name}
-            className="relative flex-1 min-w-0 flex overflow-hidden rounded-2xl px-4 sm:px-6 md:px-8 pb-8 pt-32 sm:pt-36 md:pt-40 shadow-lg group transition-all duration-300 hover:cursor-pointer"
+            className="relative flex-1 min-w-0 flex overflow-hidden rounded-xl px-2 sm:px-4 md:px-6 pb-6 pt-24 sm:pt-28 md:pt-32 shadow-md group transition-all duration-300 hover:cursor-pointer"
             onClick={() =>
               navigate(
                 `/city/${encodeURIComponent(city.name)}/${encodeURIComponent(city.wikiCode || "")}`
@@ -64,7 +64,7 @@ function CitySuggestions({ suggestedCities, text }) {
                 <img
                   src={city.photo.urls.regular}
                   alt={city.photo.alt_description || city.name}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <PhotoCredit 
                   author={city.photo.user.name} 
@@ -74,13 +74,13 @@ function CitySuggestions({ suggestedCities, text }) {
               </>
             )}
 
-            <div className="absolute inset-0 bg-black opacity-40 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-black opacity-35 group-hover:opacity-60 transition-opacity duration-300"></div>
 
-            <div className="absolute top-0 left-0 z-10 p-4 sm:p-6 transition-all duration-300 group-hover:-translate-y-2">
-              <h3 className="text-3xl sm:text-4xl md:text-5xl tracking-wide font-bebas font-medium text-white drop-shadow group-hover:text-amber-500 transition-colors duration-300">
+            <div className="absolute top-0 left-0 z-10 p-3 sm:p-4 transition-all duration-300 group-hover:-translate-y-1">
+              <h3 className="text-xl sm:text-2xl md:text-3xl tracking-wide font-bebas font-medium text-white drop-shadow group-hover:text-amber-500 transition-colors duration-300">
                 {city.name}
               </h3>
-              <div className="text-sm sm:text-md font-work leading-6 text-white group-hover:text-amber-500 transition-colors duration-300">
+              <div className="text-xs sm:text-sm font-work leading-5 text-white group-hover:text-amber-500 transition-colors duration-300">
                 {city.country}
               </div>
             </div>

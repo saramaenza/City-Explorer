@@ -14,7 +14,7 @@ function CityHero({ photo, labelCityName, weather, forecast, loadingWeather, loa
         homepage={false}
         isCityHero={true}
       >
-        <div className="bg-white/75 rounded-xl w-2/3 mt-5 p-3">
+        <div className="bg-white/75 rounded-lg w-full sm:w-3/4 md:w-2/3 mt-3 p-2">
           <WeatherPanel weather={weather} forecast={forecast} loading={loadingWeather} error={errorWeather}/>
         </div>
         {loadingImage && <LoadingSpinner text="image" />}

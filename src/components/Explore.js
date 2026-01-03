@@ -57,20 +57,20 @@ function Explore() {
             isHero={true}
         />
 
-        <div className="py-10">
-            <div className="py-7">
+        <div className="py-5">
+            <div className="py-4">
                 <CitySuggestions suggestedCities={suggestedCitiesEurope} text={"Europe"} />
             </div>
-            <div className="py-7">
+            <div className="py-4">
                 <CitySuggestions suggestedCities={suggestedCitiesAmerica} text={"America"} />
             </div>
-            <div className="py-7">
+            <div className="py-4">
                 <CitySuggestions suggestedCities={suggestedCitiesAsia} text={"Asia"} />
             </div>
-            <div className="py-7">
+            <div className="py-4">
                 <CitySuggestions suggestedCities={suggestedCitiesAfrica} text={"Africa"} />
             </div>
-            <div className="py-7">
+            <div className="py-4">
                 <CitySuggestions suggestedCities={suggestedCitiesOceania} text={"Oceania"} />
             </div>
         </div>
