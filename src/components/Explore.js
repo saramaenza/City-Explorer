@@ -52,7 +52,8 @@ function Explore() {
         <PhotoCredit 
             author="Tim Garifov" 
             url="https://unsplash.com/it/@timgarifov?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" 
-            downloadUrl="https://unsplash.com/photos/PKZtpOIMRYk/download?force=true" 
+            downloadUrl="https://unsplash.com/photos/PKZtpOIMRYk/download?force=true"
+            isHero={false}
         />
 
         <div className="py-10">

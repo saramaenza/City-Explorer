@@ -21,7 +21,8 @@ function CityHero({ photo, labelCityName, weather, forecast, loadingWeather, loa
       <PhotoCredit 
         author={photo?.user?.name}  
         url={`${photo?.user?.links?.html}?utm_source=city_explorer&utm_medium=referral`}
-        downloadUrl={photo?.links?.download} />
+        downloadUrl={photo?.links?.download} 
+        isHero={true} />
     </>
   );
 }

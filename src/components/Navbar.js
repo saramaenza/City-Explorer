@@ -5,7 +5,7 @@ function Hero() {
 
   return (
     <nav
-      className="absolute inset-x-0 top-6 z-50 mt-2 mx-auto w-1/2 max-w-3xl border border-gray-100 bg-white py-3 shadow backdrop-blur-lg rounded-2xl lg:max-w-5xl focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
+      className="absolute inset-x-0 top-6 z-50 mt-2 mx-auto w-2/3 sm:w-2/3 md:w-3/4 lg:w-1/2 max-w-3xl border border-gray-100 bg-white py-3 shadow backdrop-blur-lg rounded-2xl lg:max-w-5xl focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
       aria-label="Main navigation"
     >
       <div className="px-2 sm:px-4">

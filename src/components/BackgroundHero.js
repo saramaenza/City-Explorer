@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function BackgroundHero({ image, children }) {
   return (
     <div
-      className="w-full h-screen flex flex-col items-center justify-center relative"
+      className="w-full h-[80vh] lg:h-screen flex flex-col items-center justify-center relative"
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",

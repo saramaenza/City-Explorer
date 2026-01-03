@@ -66,7 +66,11 @@ function CitySuggestions({ suggestedCities, text }) {
                   alt={city.photo.alt_description || city.name}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <PhotoCredit author={city.photo.user.name} url={`${city.photo.user.links.html}?utm_source=city_explorer&utm_medium=referral`} downloadUrl={city.photo.links.download} />
+                <PhotoCredit 
+                  author={city.photo.user.name} 
+                  url={`${city.photo.user.links.html}?utm_source=city_explorer&utm_medium=referral`} 
+                  downloadUrl={city.photo.links.download}
+                  isHero={false} />
               </>
             )}
 

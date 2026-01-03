@@ -19,7 +19,8 @@ function HeroHomepage() {
       <PhotoCredit 
         author="Robin Noguier" 
         url="https://unsplash.com/@robinnoguier?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" 
-        downloadUrl="https://unsplash.com/photos/sydwCr54rf0/download?force=true"/>
+        downloadUrl="https://unsplash.com/photos/sydwCr54rf0/download?force=true"
+        isHero={true}/>
     </>
   );
 }
