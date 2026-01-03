@@ -77,7 +77,7 @@ function CitySuggestions({ suggestedCities, text }) {
             <div className="absolute inset-0 bg-black opacity-35 group-hover:opacity-60 transition-opacity duration-300"></div>
 
             <div className="absolute top-0 left-0 z-10 p-3 sm:p-4 transition-all duration-300 group-hover:-translate-y-1">
-              <h3 className="text-xl sm:text-2xl md:text-3xl tracking-wide font-bebas font-medium text-white drop-shadow group-hover:text-amber-500 transition-colors duration-300">
+              <h3 className="text-3xl lg:text-4xl tracking-wide font-bebas font-medium text-white drop-shadow group-hover:text-amber-500 transition-colors duration-300">
                 {city.name}
               </h3>
               <div className="text-xs sm:text-sm font-work leading-5 text-white group-hover:text-amber-500 transition-colors duration-300">
