@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-function BackgroundHero({ image, children }) {
+function BackgroundHero({ image, children, isCityHero }) {
   return (
     <div
-      className="w-full h-[80vh] lg:h-screen flex flex-col items-center justify-center relative"
+      className={`w-full ${isCityHero ? "h-screen" : "h-[80vh] lg:h-screen"} flex flex-col items-center justify-center relative`}
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",

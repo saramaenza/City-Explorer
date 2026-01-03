@@ -26,15 +26,15 @@ return (
                       />
                     )}
                     <div>
-                      <div className="text-5xl font-medium text-gray-900 font-work">
+                      <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 font-work">
                         {Math.round(weather.main.temp)}°
                       </div>
-                      <div className="text-gray-900 capitalize font-work text-2xl">
+                      <div className="text-xl sm:text-xl md:text-2xl lg:text-2xltext-gray-900 capitalize font-work">
                         {weather.weather[0].description}
                       </div>
                     </div>
                   </div>
-                  <div className="mt-2 flex gap-7 text-lg text-gray-700 font-work">
+                  <div className="mt-2 flex gap-7 text-md sm:text-md md:text-lg lg:text-lg text-gray-700 font-work">
                     <div className="flex items-center gap-2">
                       <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1f1f1f">
                         <path d="M480-100q-133 0-226.5-92T160-416q0-63 24.5-120.5T254-638l226-222 226 222q45 44 69.5 101.5T800-416q0 132-93.5 224T480-100Zm0-80q100 0 170-68.5T720-416q0-47-18-89.5T650-580L480-748 310-580q-34 32-52 74.5T240-416q0 99 70 167.5T480-180Z"/>
@@ -60,7 +60,7 @@ return (
                       key={idx}
                       className="flex flex-col items-center justify-between px-2 py-3 bg-white rounded-lg shadow-sm"
                     >
-                      <div className="text-base sm:text-lg text-gray-800 font-work mb-2">
+                      <div className="text-md sm:text-md md:text-xl lg:text-xl text-gray-800 font-work mb-2">
                         {item.dt_txt.slice(11, 16)}
                       </div>
                       {item.weather && item.weather[0] && (
@@ -70,7 +70,7 @@ return (
                           className="w-12 h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 xl:w-22 xl:h-22"
                         />
                       )}
-                      <div className="text-xl sm:text-2xl font-medium text-gray-800 font-work">
+                      <div className="text-md sm:text-md md:text-xl lg:text-xl font-medium text-gray-800 font-work">
                         {Math.round(item.main.temp)}°
                       </div>
                     </div>

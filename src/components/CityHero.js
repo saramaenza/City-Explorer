@@ -12,6 +12,7 @@ function CityHero({ photo, labelCityName, weather, forecast, loadingWeather, loa
         image={UNSPLASH_IMAGE_URL}
         title={labelCityName}
         homepage={false}
+        isCityHero={true}
       >
         <div className="bg-white/75 rounded-xl w-2/3 mt-5 p-3">
           <WeatherPanel weather={weather} forecast={forecast} loading={loadingWeather} error={errorWeather}/>

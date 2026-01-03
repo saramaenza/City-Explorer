@@ -12,6 +12,7 @@ function HeroHomepage() {
         title="Let's explore the world"
         subtitle="Find your next destination"
         homepage={true}
+        isCityHero={false}
       >
         <SearchInput />
       </HeroSection>

@@ -47,6 +47,7 @@ function Explore() {
             image={UNSPLASH_IMAGE_URL}
             title="Tips for your next trips"
             subtitle="Discover popular cities around the world"
+            isCityHero={false}
             >
         </HeroSection>
         <PhotoCredit 
