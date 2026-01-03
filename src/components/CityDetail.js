@@ -132,7 +132,7 @@ function CityDetail() {
 
     return () => { isMounted = false; };
 
-  }, [cityName, wikiCode, isFetchingCityDetail]);
+  }, [cityName, wikiCode]);
 
   return (
     <>
