@@ -26,7 +26,7 @@ function PhotoCredit({ author, url, downloadUrl, isHero }) {
   }
 
   return (
-    <div className="absolute bottom-1 right-1 text-[9px] text-xs text-gray-200/80 z-20 px-1.5 py-0.5 rounded max-w-[90vw] break-words">
+    <div className="absolute bottom-1 right-1 text-[9px] text-xs text-gray-200/80 z-20 px-1.5 py-0.5 rounded max-w-[90vw] wrap-break-words">
       Photo by{" "}
       <a
         href={url}
