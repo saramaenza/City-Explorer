@@ -4,6 +4,8 @@ City Explorer is a React-based web application that allows users to search for c
 
 The project focuses on data consistency, user experience, and clean integration of multiple external APIs, combining REST services and SPARQL queries into a single, cohesive interface.
 
+🔗 Live Demo: https://city-explorer-ten.vercel.app/
+
 ## Features
 
 #### Assisted City Search (Autocomplete)
