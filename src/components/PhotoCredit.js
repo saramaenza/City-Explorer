@@ -5,7 +5,7 @@ function PhotoCredit({ author, url, downloadUrl, isHero }) {
 
   if (isHero) {
     return (
-      <div className="w-full text-center text-gray-400 text-[10px] text-xs mt-1">
+      <div className="w-full text-center text-gray-400 text-[10px] text-xs 2xl:text-sm mt-1">
         Photo by{" "}
         <a href={url} target="_blank" rel="noopener noreferrer" className="underline">
           {author}
@@ -26,7 +26,7 @@ function PhotoCredit({ author, url, downloadUrl, isHero }) {
   }
 
   return (
-    <div className="absolute bottom-1 right-1 text-[9px] text-xs text-gray-200/80 z-20 px-1.5 py-0.5 rounded max-w-[90vw] wrap-break-words">
+    <div className="absolute bottom-1 right-1 text-[9px] text-xs 2xl:text-sm text-gray-200/80 z-20 px-1.5 py-0.5 rounded max-w-[90vw] wrap-break-words">
       Photo by{" "}
       <a
         href={url}

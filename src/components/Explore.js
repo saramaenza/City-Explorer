@@ -42,7 +42,7 @@ const suggestedCitiesOceania = [
 
 function Explore() {
   return (
-    <>
+    <div>
         <HeroSection
             image={UNSPLASH_IMAGE_URL}
             title="Tips for your next trips"
@@ -57,24 +57,24 @@ function Explore() {
             isHero={true}
         />
 
-        <div className="py-5">
-            <div className="py-4">
+        <div className="py-5 mx-4 md:mx-6 2xl:mx-10">
+            <div className="py-4 2xl:pb-15">
                 <CitySuggestions suggestedCities={suggestedCitiesEurope} text={"Europe"} />
             </div>
-            <div className="py-4">
+            <div className="py-4 2xl:pb-15">
                 <CitySuggestions suggestedCities={suggestedCitiesAmerica} text={"America"} />
             </div>
-            <div className="py-4">
+            <div className="py-4 2xl:pb-15">
                 <CitySuggestions suggestedCities={suggestedCitiesAsia} text={"Asia"} />
             </div>
-            <div className="py-4">
+            <div className="py-4 2xl:pb-15">
                 <CitySuggestions suggestedCities={suggestedCitiesAfrica} text={"Africa"} />
             </div>
-            <div className="py-4">
+            <div className="py-4 2xl:pb-15">
                 <CitySuggestions suggestedCities={suggestedCitiesOceania} text={"Oceania"} />
             </div>
         </div>
-    </>
+    </div>
   );
 }
 

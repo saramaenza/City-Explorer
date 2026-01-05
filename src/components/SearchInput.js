@@ -91,13 +91,13 @@ function SearchInput({ onSelect }) {
 
   return (
     <div className="flex justify-center mt-5">
-      <form className="w-full max-w-sm" autoComplete="off" ref={inputRef} onSubmit={handleSearch}>
+      <form className="w-full" autoComplete="off" ref={inputRef} onSubmit={handleSearch}>
         <div className="relative">
           <div className="flex">
             <input 
               type="search" 
               id="search" 
-              className="font-work block w-full p-2 pl-4 bg-white border border-gray-100 text-gray-900 text-base rounded-l-xl shadow placeholder:text-gray-500 
+              className="font-work block p-2 2xl:p-4 pl-4 bg-white border border-gray-100 text-gray-900 text-sm 2xl:text-lg rounded-l-xl shadow placeholder:text-gray-500 
                 focus:outline-none focus:ring-0 focus:border-gray-100 
                 focus-visible:outline-none focus-visible:ring-0 focus-visible:border-gray-100 flex-1" 
               placeholder="Search for a city..." 
@@ -112,17 +112,17 @@ function SearchInput({ onSelect }) {
             />
             <button
               type="button"
-              className="font-work cursor-pointer p-2 bg-amber-500 inline-flex items-center text-black bg-brand hover:bg-amber-400 shadow-xs font-medium leading-5 rounded-r-xl text-sm
+              className="font-work cursor-pointer p-2 2xl:p-4 bg-amber-500 inline-flex items-center text-black bg-brand hover:bg-amber-400 shadow-xs font-medium leading-5 rounded-r-xl text-sm
                 focus:outline-none focus:ring-0 focus:border-transparent
                 focus-visible:outline-none focus-visible:ring-0 focus-visible:border-transparent"
               onClick={handleSearch}
             >
-              <svg className="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
-              Search
+              <svg className="w-4 h-4 2xl:w-6 2xl:h-6 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+              <span className="text-sm 2xl:text-lg">Search</span>
             </button>
           </div>
           {error && (
-            <div className="font-work absolute top-12 bg-white border border-red-400 rounded-xl px-4 py-1 shadow-lg z-60 text-red-600 text-base font-medium flex items-center justify-center"
+            <div className="font-work absolute top-12 bg-white border border-red-400 rounded-xl px-4 2xl:px-5 py-1 2xl:py-2 shadow-lg z-60 text-red-600 text-base 2xl:text-lg text-center font-medium flex items-center justify-center"
                 style={{ minWidth: '200px', pointerEvents: 'none' }}>
               Please enter a destination to start searching
             </div>

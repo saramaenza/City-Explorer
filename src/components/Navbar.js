@@ -19,21 +19,21 @@ function Hero() {
               <span className="inline-block font-bebas text-xl tracking-wide focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0">
                 <img src="../img/logo.png" 
                   alt="City Explorer Logo" 
-                  className="h-6 w-auto sm:h-7 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0" />
+                  className="h-6 w-auto sm:h-7 2xl:h-9 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0" />
               </span>
             </a>
           </div>
           {/* Desktop menu */}
           <div className="hidden md:flex md:items-center md:justify-center md:gap-3">
             <a
-              className="font-work inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 relative group"
+              className="font-work inline-block rounded-lg px-2 py-1 text-sm 2xl:text-lg font-medium text-gray-900 relative group"
               href="/"
             >
               Home
               <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-amber-500 rounded transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
-              className="font-work inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 relative group"
+              className="font-work inline-block rounded-lg px-2 py-1 text-sm 2xl:text-lg font-medium text-gray-900 relative group"
               href="/explore"
             >
               Explore
