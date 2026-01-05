@@ -1,48 +1,54 @@
 # 🧭 City Explorer 
 
-A web application built with React that allows users to search for a city and view weather data, geographical information, list of main attractions, and a dynamic background image related to the selected city, integrating data from multiple external APIs into a single, smooth user experience.
+City Explorer is a React-based web application that allows users to search for cities and explore weather conditions, geographical data, and main attractions, all enriched by a dynamic, city-related background image.
 
-## Main Features
-City search with autocomplete
+The project focuses on data consistency, user experience, and clean integration of multiple external APIs, combining REST services and SPARQL queries into a single, cohesive interface.
+
+## Features
+
+#### Assisted City Search (Autocomplete)
 - API-based assisted search
 - Users can select only valid and available cities
 - Prevents invalid input and reduces edge cases
 
-Current weather and forecast
+#### Weather information
 - Real-time weather data
+- Weather forecast
 - Clear and readable presentation
 
-City details
+#### City details
+Displays detailed geographic and contextual information:
 - Name
-- Region
-- Country
+- Region & Country
 - Population
 - Elevation
 - Timezone
 - Geographic coordinates
   
-Dynamic background image
-- A city-related background image dynamically loaded based on the selected city
-- Enhances visual context without distracting from core information
+#### Dynamic background image
+- Automatically loads a background image related to the selected city
+- Images are fetched dynamically from Unsplash
+- Enhances immersion without distracting from content
 
-List of main attractions
-- Retrieves notable attractions from Wikidata using the city’s unique ID
-- Displays attraction names with links to their Wikidata pages
+#### List of main attractions
+- Retrieves notable attractions via Wikidata SPARQL queries
+- Uses the city’s unique Wikidata ID
+- Displays attraction names with direct links to Wikidata pages
 
 
-## Design Decisions
-### Assisted search instead of free text input
-City search is handled exclusively through an API-driven autocomplete.
+## Design Choices
 
-This approach:
-- ensures data consistency across different APIs
-- reduces input errors
-- improves the overall user experience
-- simplifies error and state management
+City selection is handled exclusively through an API-based autocomplete system.
+This decision:
+- Guarantees data consistency between APIs
+- Reduces incorrect or incomplete API requests
+- Improves error handling and state management
+- Enhances overall user experience
 
-Weather and content APIs rely on precise geographic coordinates; forcing the selection of a valid city prevents incorrect requests and unexpected behaviors.
+Since weather and attractions depend on precise geographic data, forcing users to select a valid city avoids unexpected behaviors.
 
 ## Technologies Used
+
 - React
   - Hooks
   - Component-based architecture
@@ -50,26 +56,25 @@ Weather and content APIs rely on precise geographic coordinates; forcing the sel
   - Utility-first styling
   - Responsive design
 - JavaScript (ES6+)
-- REST APIs
-  - Fetch
-- SPARQL queries to Wikidata for retrieving city attractions
+- REST APIs (Fetch)
+- SPARQL queries (Wikidata)
 
 ## Integrated APIs
+
 GeoDB Cities API
 - City search
 - City details data
-- Main attractions
 
 OpenWeather API
 - Current weather
 - Weather forecast
 
 Unsplash API
-- City-related background images
+- Dynamic city-related images
 
 Wikidata
-- Main attractions for the selected city
-- Attraction names and links
+- Main attractions
+- Attraction metadata and links
 
 ## UI State Management
 
@@ -78,9 +83,11 @@ The application explicitly handles:
 - Empty states when no city is selected
 - Error states in case of network or API failures
 
-This approach improves perceived reliability and overall usability.
+This results in a more reliable and user-friendly experience.
 
 ## Application Structure 
+
+Main components include:
 - AttractionsList: displays a list of attractions for the selected city.
 - BackgroundHero: handles the background image and visual appearance of the hero section.
 - CityDetail: detail page with in-depth information about the selected city.
@@ -98,17 +105,67 @@ This approach improves perceived reliability and overall usability.
 - SearchInput: search input used to find and select cities via autocomplete.
 - WeatherPanel: displays weather information for the selected city.
 
+
+## Installation & Local Development
+
+Tu run the project locally:
+
+#### Clone the repository
+- git clone https://github.com/saramaenza/City-Explorer.git
+
+#### Install dependencies
+- npm install
+
+#### Start the development server
+- npm start
+
+The application will be available at http://localhost:3000.
+
+⚠️ Remember to configure your API keys in an .env file:
+- GeoDB Cities API
+- OpenWeather API
+- Unsplash API
+
+## Deployment
+
+The portfolio is deployed using Vercel with automatic builds and deployments on every push to the main branch.
+
+## Contributing
+
+Contributions, suggestions, and improvements are welcome!
+
+1- Fork the repository
+
+2- Create a new branch (feature/your-feature-name)
+
+3- Commit your changes
+
+4- Open a Pull Request
+
+
 ## Future Improvements
 - Save favorite cities using localStorage
-- Unit toggle (°C / °F)
+- Temperature unit toggle (°C / °F)
 - Performance optimizations (advanced debounce)
+- Improved error reporting and fallback UI
 
-## Author
-
-Developed by Sara Maenza
-
-Front-end developer
 
 ## Why this project matters
 
-This project demonstrates the ability to integrate multiple data sources, including REST APIs and SPARQL queries, design robust user flows, and transform complex information into a clear and usable interface.
+City Explorer showcases:
+- Integration of multiple heterogeneous data sources
+- Use of both REST APIs and SPARQL queries
+- Careful UI/UX design decisions
+- Ability to transform complex data into a clear, intuitive interface
+
+It reflects a strong focus on real-world frontend challenges, including data reliability, state management, and scalability.
+
+
+## Contact
+If you’d like to get in touch with me:
+
+💼 LinkedIn: www.linkedin.com/in/sara-maenza
+
+📧 Email: sara.maenza98@gmail.com
+
+Thank you for visiting my City Explorer repository! I’m always open to feedback, collaboration, and new opportunities 😊
