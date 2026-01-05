@@ -5,7 +5,7 @@ function HeroSection({ image, title, subtitle, homepage, children, isCityHero })
   return (
     <BackgroundHero image={image} isCityHero={isCityHero}>
       <h1
-        className={`font-bebas text-5xl sm:text-5xl md:text-7xl lg:text-9xl text-white pt-8 sm:pt-12 md:pt-16 text-center tracking-wide relative z-10 ${!homepage ? "pt-6 sm:pt-10 md:pt-14" : ""} drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-lg`}
+        className={`font-bebas text-5xl sm:text-5xl md:text-7xl lg:text-8xl text-white pt-8 sm:pt-12 md:pt-16 text-center tracking-wide relative z-10 ${!homepage ? "pt-6 sm:pt-10 md:pt-14" : ""} drop-shadow-[0_4px_24px_rgba(0,0,0,1)] text-shadow-lg`}
       >
         {title}
       </h1>

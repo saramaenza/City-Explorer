@@ -91,7 +91,7 @@ function SearchInput({ onSelect }) {
 
   return (
     <div className="flex justify-center mt-5">
-      <form className="w-xl max-w-sm" autoComplete="off" ref={inputRef} onSubmit={handleSearch}>
+      <form className="w-full max-w-sm" autoComplete="off" ref={inputRef} onSubmit={handleSearch}>
         <div className="relative">
           <div className="flex">
             <input 

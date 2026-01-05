@@ -35,7 +35,7 @@ function CitySuggestions({ suggestedCities, text }) {
   }, [suggestedCities]);
 
   return (
-    <div className="mx-2 md:mx-6">
+    <div className="mx-4 md:mx-6">
         <h2 className="font-bebas text-3xl">{text}</h2>
         {loading && (
           <div className="flex items-center justify-center mt-6">
